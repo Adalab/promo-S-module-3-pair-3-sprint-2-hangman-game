@@ -68,7 +68,7 @@ function App() {
       <main className='main'>
         <section>
           <SolutionsLetters word ={word} userLetters={userLetters}/>
-          <ErrorLetters />
+          <ErrorLetters word={word} userLetters={userLetters}/>
           <form className='form' onSubmit={handleSubmit}>
             <label className='title' htmlFor='last-letter'>
               Escribe una letra:
