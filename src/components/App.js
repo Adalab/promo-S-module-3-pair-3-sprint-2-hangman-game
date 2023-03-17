@@ -14,6 +14,12 @@ import Header from './Header';
 import Dummy from './Dummy';
 import SolutionsLetters from './SolutionsLetters';
 import ErrorLetters from './ErrorLetters';
+import Form from './Form';
+import Footer from './Footer';
+
+import {Route, Routes} from 'react-router-dom';
+import Instructions from './Instructions';
+import Options from './Options';
 
 function App() {
   const [word, setWord] = useState('');
@@ -69,26 +75,17 @@ function App() {
         <section>
           <SolutionsLetters word ={word} userLetters={userLetters}/>
           <ErrorLetters word={word} userLetters={userLetters}/>
-          <form className='form' onSubmit={handleSubmit}>
-            <label className='title' htmlFor='last-letter'>
-              Escribe una letra:
-            </label>
-            <input
-              autoFocus
-              autoComplete='off'
-              className='form__input'
-              maxLength='1'
-              type='text'
-              name='last-letter'
-              id='last-letter'
-              value={lastLetter}
-              onKeyDown={handleKeyDown}
-              onChange={handleChange}
-            />
-          </form>
+          <Form handleSubmit={handleSubmit} handleChange={handleChange} handleKeyDown={handleKeyDown} handleLastLetter={handleLastLetter}/>
         </section>
         <Dummy error={getNumberOfErrors()}/>
       </main>
+      <Footer>
+        <Routes>
+          <Route path='/' />
+          <Route path='/Instructions' element={<Instructions />} />
+          <Route path='/Options' element={<Options />} />
+        </Routes>
+      </Footer>
     </div>
   );
 }
